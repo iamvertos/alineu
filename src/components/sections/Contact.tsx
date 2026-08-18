@@ -108,9 +108,11 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <Reveal id="book" delay={80}>
-          <AppointmentForm />
-        </Reveal>
+        <div id="book" className="scroll-mt-28">
+          <Reveal delay={80}>
+            <AppointmentForm />
+          </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { CLINIC } from "@/lib/clinic";
 
 export function FloatingCta() {
@@ -11,7 +12,7 @@ export function FloatingCta() {
         aria-label="Chat with AlineU on WhatsApp"
         className="inline-flex items-center justify-center rounded-full bg-primary p-3.5 text-primary-foreground shadow-[0_18px_36px_-18px_rgba(31,46,23,0.95)] transition-transform hover:-translate-y-0.5"
       >
-        <MessageCircle className="h-5 w-5" />
+        <WhatsAppIcon className="h-5 w-5" />
       </a>
       <a
         href={CLINIC.phoneHref}

@@ -20,12 +20,15 @@ export function Hero() {
             Physiotherapy in Ashoknagar, MP
           </p>
 
-          <h1 className="mt-6 font-[family-name:var(--font-display)] text-4xl font-bold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
-            Move Better.
-            <br />
-            Recover Stronger.
+          <h1 className="hero-headline mt-6 font-[family-name:var(--font-display)] text-4xl font-bold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
+            <span className="hero-line block">Move Better.</span>
+            <span className="hero-line hero-line-2 block bg-gradient-to-r from-[var(--primary)] via-[var(--primary)] to-[var(--sage)] bg-clip-text text-transparent">
+              Recover Stronger.
+            </span>
+            <span aria-hidden="true" className="hero-underline mt-5 block h-1 rounded-full bg-gradient-to-r from-[var(--primary)] to-[var(--sage)]" />
             <span className="sr-only"> — Physiotherapy &amp; Rehabilitation Center in Ashoknagar</span>
           </h1>
+
 
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Personalized physiotherapy and rehabilitation care in Ashoknagar for pain,

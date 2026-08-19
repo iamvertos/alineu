@@ -225,13 +225,60 @@
   }
 }
 
+@keyframes hero-line-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-underline-grow {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 5.5rem;
+    opacity: 1;
+  }
+}
+
+@utility hero-headline {
+  .hero-line {
+    animation: hero-line-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+  }
+
+  .hero-line-2 {
+    animation-delay: 0.28s;
+    padding-bottom: 0.08em;
+  }
+
+  .hero-underline {
+    width: 0;
+    animation: hero-underline-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
   .doctor-card,
-  .badge-ring {
+  .badge-ring,
+  .hero-headline .hero-line,
+  .hero-headline .hero-underline {
     animation: none;
   }
+
+  .hero-headline .hero-underline {
+    width: 5.5rem;
+  }
 }
+

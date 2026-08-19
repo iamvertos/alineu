@@ -105,6 +105,7 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --card-glow: oklch(0.28 0.045 138 / 0.55);
 }
 
 .dark {
@@ -181,8 +182,56 @@
   }
 }
 
+@keyframes doctor-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes badge-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 32%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 8px color-mix(in oklab, var(--primary) 0%, transparent);
+  }
+}
+
+@utility doctor-card {
+  animation: doctor-card-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+  transition:
+    transform 0.25s ease-out,
+    box-shadow 0.25s ease-out;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 32px 60px -26px var(--card-glow);
+  }
+}
+
+@utility badge-ring {
+  animation: badge-pulse 2.8s ease-out infinite;
+  transition: transform 0.25s ease-out;
+
+  .doctor-card:hover & {
+    transform: scale(1.06);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .doctor-card,
+  .badge-ring {
+    animation: none;
   }
 }

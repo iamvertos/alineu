@@ -1,4 +1,4 @@
-import { HeartHandshake, Layers, RefreshCcw, Sofa, TrendingUp } from "lucide-react";
+import { Award, HeartHandshake, Layers, RefreshCcw, Sofa, TrendingUp } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 const REASONS = [
@@ -26,6 +26,11 @@ const REASONS = [
     icon: Sofa,
     title: "Comfortable Environment",
     desc: "A calm, private clinic — never a rushed queue.",
+  },
+  {
+    icon: Award,
+    title: "Experienced Physiotherapist",
+    desc: "Led by Dr. Chinmay Jain with 5+ years of hands-on practice.",
   },
 ];
 

@@ -1,4 +1,4 @@
-import { Phone, Star } from "lucide-react";
+import { BadgeCheck, Phone, Star } from "lucide-react";
 import doctor from "@/assets/dr-chinmay-jain.jpg.asset.json";
 import { CLINIC } from "@/lib/clinic";
 
@@ -74,11 +74,26 @@ export function Hero() {
             width={900}
             height={1000}
           />
-          <div className="absolute -bottom-6 left-4 rounded-2xl border border-border bg-card px-5 py-4 shadow-[0_24px_50px_-32px_rgba(31,46,23,0.8)] sm:left-8">
-            <p className="font-[family-name:var(--font-display)] text-base font-semibold text-foreground">
-              {CLINIC.doctor.name}
-            </p>
-            <p className="text-xs text-muted-foreground">{CLINIC.doctor.title}</p>
+          <div className="doctor-card group absolute -bottom-6 left-4 flex items-center gap-3.5 rounded-2xl border border-card/60 bg-card/70 px-4 py-3.5 shadow-[0_24px_50px_-28px_var(--card-glow)] backdrop-blur-xl sm:left-8 sm:gap-4 sm:px-5 sm:py-4">
+            <span className="badge-ring relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[var(--tint)] to-[var(--mist)] text-primary">
+              <BadgeCheck className="h-5 w-5" />
+            </span>
+            <div className="min-w-0">
+              <p className="font-[family-name:var(--font-display)] text-base font-semibold leading-tight text-foreground">
+                {CLINIC.doctor.name}
+              </p>
+              <p className="mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.13em] text-muted-foreground">
+                {CLINIC.doctor.title}
+              </p>
+              <div className="mt-2 flex items-center gap-2 border-t border-border/70 pt-2 text-[0.7rem] font-medium text-muted-foreground">
+                <span className="text-primary">5+ yrs</span>
+                <span aria-hidden="true" className="h-3 w-px bg-border" />
+                <span className="inline-flex items-center gap-1">
+                  <Star className="h-3 w-3 fill-current text-primary" aria-hidden="true" />
+                  {CLINIC.rating}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

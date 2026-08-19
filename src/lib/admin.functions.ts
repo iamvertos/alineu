@@ -65,8 +65,11 @@ export const getLeadStats = createServerFn({ method: "GET" })
     const rows = (data ?? []) as Lead[];
     const now = Date.now();
     const day = 24 * 60 * 60 * 1000;
-    const startOfToday = new Date();
-    startOfToday.setHours(0, 0, 0, 0);
+    // Clinic operates in IST; bucket "today" and hour-of-day in IST.
+    const IST_OFFSET = 5.5 * 60 * 60 * 1000;
+    const istNow = new Date(now + IST_OFFSET);
+    const startOfTodayIst =
+      Date.UTC(istNow.getUTCFullYear(), istNow.getUTCMonth(), istNow.getUTCDate()) - IST_OFFSET;
 
     const byStatus: Record<LeadStatus, number> = {
       new: 0,
@@ -84,11 +87,11 @@ export const getLeadStats = createServerFn({ method: "GET" })
     for (const row of rows) {
       const created = new Date(row.created_at);
       const ts = created.getTime();
-      if (ts >= startOfToday.getTime()) today += 1;
+      if (ts >= startOfTodayIst) today += 1;
       if (now - ts <= 7 * day) last7 += 1;
       if (now - ts <= 30 * day) last30 += 1;
       byStatus[row.status] = (byStatus[row.status] ?? 0) + 1;
-      hourly[created.getHours()]!.count += 1;
+      hourly[new Date(ts + IST_OFFSET).getUTCHours()]!.count += 1;
       if (row.status === "new") {
         if (!oldestPendingAt || ts < new Date(oldestPendingAt).getTime()) {
           oldestPendingAt = row.created_at;

@@ -91,7 +91,7 @@ export function AppointmentForm() {
     <form
       onSubmit={onSubmit}
       noValidate
-      className="rounded-3xl border border-white/15 bg-gradient-to-br from-primary to-[oklch(0.32_0.06_138)] p-6 shadow-[0_36px_70px_-40px_rgba(31,46,23,0.95)] ring-1 ring-primary/30 sm:p-8"
+      className="rounded-3xl border border-white/15 bg-linear-to-br from-primary to-[oklch(0.32_0.06_138)] p-6 shadow-[0_36px_70px_-40px_rgba(31,46,23,0.95)] ring-1 ring-primary/30 sm:p-8"
     >
       <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold text-white">
         Request an appointment

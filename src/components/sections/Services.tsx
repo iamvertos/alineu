@@ -6,9 +6,11 @@ import {
   HandHeart,
   Hexagon,
   MoveVertical,
+  PersonStanding,
   Stethoscope,
   Syringe,
   Waves,
+  Zap,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
@@ -23,6 +25,8 @@ const SERVICES = [
   { icon: Hexagon, name: "Cupping Therapy", desc: "Improves circulation and muscle recovery" },
   { icon: Waves, name: "Shockwave Therapy", desc: "Advanced care for chronic tissue pain" },
   { icon: Brain, name: "Neurological Rehabilitation", desc: "Rebuild movement, balance and control" },
+  { icon: PersonStanding, name: "Geriatric Physiotherapy", desc: "Stay active and independent with age" },
+  { icon: Zap, name: "Electrotherapy (TENS & IFT)", desc: "Pain relief through targeted currents" },
 ];
 
 export function Services() {

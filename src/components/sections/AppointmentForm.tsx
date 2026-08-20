@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { z } from "zod";
-import { supabase } from "@/integrations/supabase/client";
+import { useServerFn } from "@tanstack/react-start";
+import { createAppointmentRequest } from "@/lib/appointments.functions";
 
 const schema = z.object({
   name: z
@@ -29,6 +30,7 @@ const labelClass = "text-sm font-medium text-white/85";
 export function AppointmentForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const submitRequest = useServerFn(createAppointmentRequest);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -49,14 +51,16 @@ export function AppointmentForm() {
     setErrors({});
     setStatus("sending");
 
-    const { error } = await supabase.from("appointment_requests").insert({
-      name: parsed.data.name,
-      phone: parsed.data.phone,
-      preferred_date: parsed.data.preferred_date ? parsed.data.preferred_date : null,
-      message: parsed.data.message ? parsed.data.message : null,
-    });
-
-    if (error) {
+    try {
+      await submitRequest({
+        data: {
+          name: parsed.data.name,
+          phone: parsed.data.phone,
+          preferred_date: parsed.data.preferred_date ?? null,
+          message: parsed.data.message ?? null,
+        },
+      });
+    } catch {
       setStatus("error");
       return;
     }
